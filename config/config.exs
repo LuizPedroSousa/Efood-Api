@@ -18,6 +18,10 @@ config :efood_api, EfoodApiWeb.Endpoint,
   pubsub_server: EfoodApi.PubSub,
   live_view: [signing_salt: "a2AnpUJP"]
 
+config :efood_api, EfoodApi.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
