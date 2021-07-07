@@ -9,6 +9,13 @@ defmodule EfoodApiWeb.UserView do
     }
   end
 
+  def render("show_user.json", %{user: user}) do
+    %{
+      ok: "Show user data with successfully",
+      user: get_user(user)
+    }
+  end
+
   defp get_user(%User{
          id: id,
          name: name,

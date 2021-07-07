@@ -13,6 +13,7 @@ defmodule EfoodApiWeb.Router do
   scope "/api/users", EfoodApiWeb do
     pipe_through :api
     post "/create", UserController, :create
+    get "/show/:id", UserController, :show
   end
 
   if Mix.env() in [:dev, :test] do

@@ -11,4 +11,12 @@ defmodule EfoodApiWeb.UserController do
       |> render("create_user.json", user: user)
     end
   end
+
+  def show(conn, %{"id" => id}) do
+    with {:ok, %User{} = user} <- EfoodApi.show_user(id) do
+      conn
+      |> put_status(:created)
+      |> render("show_user.json", user: user)
+    end
+  end
 end
