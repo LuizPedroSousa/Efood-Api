@@ -8,6 +8,7 @@ defmodule EfoodApi.Repo.Migrations.CreateOrders do
       add :status, :integer
       add :track_address, :string
       add :user_id, references(:users, type: :binary_id, on_delete: :delete_all)
+      timestamps()
     end
   end
 end

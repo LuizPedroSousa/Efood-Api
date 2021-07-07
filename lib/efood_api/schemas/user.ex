@@ -21,6 +21,7 @@ defmodule EfoodApi.User do
     %__MODULE__{}
     |> cast(params, @required_params)
     |> validate_required(@required_params)
+    |> validate_length(:password, min: 6)
     |> unique_constraint([:username])
     |> put_password_hash()
   end
@@ -28,4 +29,6 @@ defmodule EfoodApi.User do
   defp put_password_hash(%Changeset{valid?: true, changes: %{password: password}} = changeset) do
     changeset |> change(Pbkdf2.add_hash(password))
   end
+
+  defp put_password_hash(changeset), do: changeset
 end
